@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using DatabaseObjectPackageInstaller.Constants;
@@ -69,7 +70,7 @@ namespace DatabaseObjectPackageInstaller.Workers
                             }
                             try
                             {
-                                var fileText = File.ReadAllText(databaseObject.DatabaseObjectPath);
+                                var fileText = File.ReadAllText(databaseObject.DatabaseObjectPath, Encoding.UTF8);
                                 SqlHelper.ExecSQLReturn(sqlConn, databaseObject.CreateStatement);
                                 var sqlBatches = BatchFileHelper.GetBatches(fileText);
                                 foreach (var batch in sqlBatches)
