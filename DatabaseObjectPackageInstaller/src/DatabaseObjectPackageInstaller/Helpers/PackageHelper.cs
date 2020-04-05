@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using DatabaseObjectPackageInstaller.Constants;
 using DatabaseObjectPackageInstaller.Enums;
 using DatabaseObjectPackageInstaller.Models;
@@ -63,9 +64,8 @@ namespace DatabaseObjectPackageInstaller.Helpers
 
         internal static bool ValidateUncompressedPackage(IPackageSettings packageSettings, out string packageTypeError)
         {
-            var valid = false;
             packageTypeError = string.Empty;
-            valid = Path.GetFileName(packageSettings.PackagePath).Equals(ResourceStrings.SequenceManifestName, StringComparison.InvariantCultureIgnoreCase);
+            var valid = Path.GetFileName(packageSettings.PackagePath).Equals(ResourceStrings.SequenceManifestName, StringComparison.InvariantCultureIgnoreCase);
             if (!valid)
             {
                 var fileList = new DirectoryInfo(packageSettings.PackagePath).GetFiles(ResourceStrings.SequenceManifestName, SearchOption.AllDirectories);
@@ -136,8 +136,9 @@ namespace DatabaseObjectPackageInstaller.Helpers
 
             if (Path.GetFileName(package).Equals(ResourceStrings.SequenceManifestName, StringComparison.InvariantCultureIgnoreCase))
             {
-                using (var reader = new StreamReader(package))
+                using (var reader = new StreamReader(package, Encoding.UTF8))
                 {
+                    
                     var line = string.Empty;
                     while ((line = reader.ReadLine()) != null)
                     {
@@ -147,8 +148,7 @@ namespace DatabaseObjectPackageInstaller.Helpers
                             continue;
                         }
                         var databaseObjectTypeString = line.Split(new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar })[0];
-                        DatabaseObjectType databaseObjectType;
-                        if (!Enum.TryParse(databaseObjectTypeString, true, out databaseObjectType))
+                        if (!Enum.TryParse(databaseObjectTypeString, true, out DatabaseObjectType databaseObjectType))
                         {
                             databaseObjectType = DatabaseObjectType.Unknown;
                         }
@@ -162,12 +162,11 @@ namespace DatabaseObjectPackageInstaller.Helpers
                 foreach (var databaseObjectTypeString in databaseObjectTypeOrderList)
                 {
                     var databaseObjectTypeDir = Path.Combine(package, databaseObjectTypeString);
-                    DatabaseObjectType databaseObjectType;
-                    if (!Enum.TryParse(databaseObjectTypeString, true, out databaseObjectType))
+                    if (!Enum.TryParse(databaseObjectTypeString, true, out DatabaseObjectType databaseObjectType))
                     {
                         databaseObjectType = DatabaseObjectType.Unknown;
                     }
-                    if(Directory.Exists(databaseObjectTypeDir))
+                    if (Directory.Exists(databaseObjectTypeDir))
                     {
                         var databaseObjectFileList = Directory.GetFiles(databaseObjectTypeDir, ResourceStrings.SqlFileTypeSearchPattern, SearchOption.AllDirectories).OrderBy(x => x);
                         foreach(var databaseObjectFile in databaseObjectFileList)

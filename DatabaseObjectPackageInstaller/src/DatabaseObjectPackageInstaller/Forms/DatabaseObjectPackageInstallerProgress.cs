@@ -6,9 +6,9 @@ using DatabaseObjectPackageInstaller.ExtensionMethods;
 
 namespace DatabaseObjectPackageInstaller.Forms
 {
-    public partial class frmDatabaseObjectPackageInstallerProgress : Form
+    public partial class FrmDatabaseObjectPackageInstallerProgress : Form
     {
-        public frmDatabaseObjectPackageInstallerProgress()
+        public FrmDatabaseObjectPackageInstallerProgress()
         {
             InitializeComponent();
             RichTextBoxAppender.SetRichTextBox(rtbLogging, "RichTextBoxAppender");
@@ -105,7 +105,7 @@ namespace DatabaseObjectPackageInstaller.Forms
             EnableExit = false;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             SetProgressToMax();
             ProgressColor(ProgressBarStatusType.Warning);
@@ -113,7 +113,7 @@ namespace DatabaseObjectPackageInstaller.Forms
             ((frmDatabaseObjectPackageInstaller)Owner).CancelCurrentTask();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
             ((frmDatabaseObjectPackageInstaller)Owner).StartPosition = FormStartPosition.Manual;
             ((frmDatabaseObjectPackageInstaller)Owner).Location = this.Location;
@@ -121,12 +121,12 @@ namespace DatabaseObjectPackageInstaller.Forms
             ((frmDatabaseObjectPackageInstaller)Owner).Show();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void frmDatabaseObjectPackageInstallerProgress_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmDatabaseObjectPackageInstallerProgress_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

@@ -11,10 +11,12 @@ namespace DatabaseObjectPackageInstaller.Workers
     {
         internal SqlConnection DatabaseConnection(IDatabaseSettings databaseSettings)
         {
-            var sqlConnectionString = new SqlConnectionStringBuilder();
-            sqlConnectionString.DataSource = databaseSettings.Server;
-            sqlConnectionString.InitialCatalog = databaseSettings.Database;
-            sqlConnectionString.ApplicationName = ResourceStrings.ApplicationName;
+            var sqlConnectionString = new SqlConnectionStringBuilder
+            {
+                DataSource = databaseSettings.Server,
+                InitialCatalog = databaseSettings.Database,
+                ApplicationName = ResourceStrings.ApplicationName
+            };
             if (!string.IsNullOrWhiteSpace(databaseSettings.UserName) && !string.IsNullOrWhiteSpace(databaseSettings.Password))
             {
 

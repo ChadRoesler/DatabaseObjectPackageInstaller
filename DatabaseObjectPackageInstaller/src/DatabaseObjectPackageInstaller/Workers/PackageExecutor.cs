@@ -34,9 +34,11 @@ namespace DatabaseObjectPackageInstaller.Workers
             {
                 try
                 {
-                    var progressStartDictionary = new Dictionary<ProgressType, string>();
-                    progressStartDictionary[ProgressType.Output] = MessageStrings.GatheringDatabaseObjects;
-                    progressStartDictionary[ProgressType.Name] = MessageStrings.GatheringDatabaseObjects;
+                    var progressStartDictionary = new Dictionary<ProgressType, string>
+                    {
+                        [ProgressType.Output] = MessageStrings.GatheringDatabaseObjects,
+                        [ProgressType.Name] = MessageStrings.GatheringDatabaseObjects
+                    };
 
                     progress.Report(progressStartDictionary);
 
@@ -49,8 +51,10 @@ namespace DatabaseObjectPackageInstaller.Workers
                     var sqlConn = new SqlServerConnection().DatabaseConnection(sessionDatabaseSettings);
                     var databaseObjectList = PackageHelper.GetDatabaseObjectsFromPackage(packagePath);
 
-                    var progressSizeDictionary = new Dictionary<ProgressType, string>();
-                    progressSizeDictionary[ProgressType.Size] = (databaseObjectList.Count + 1).ToString();
+                    var progressSizeDictionary = new Dictionary<ProgressType, string>
+                    {
+                        [ProgressType.Size] = (databaseObjectList.Count + 1).ToString()
+                    };
                     var count = 1;
                     progressSizeDictionary[ProgressType.StepCount] = count.ToString();
                     progress.Report(progressSizeDictionary);
@@ -60,10 +64,12 @@ namespace DatabaseObjectPackageInstaller.Workers
                         foreach (var databaseObject in databaseObjectList)
                         {
                             count++;
-                            var progressDatabaseObjectDictionary = new Dictionary<ProgressType, string>();
-                            progressDatabaseObjectDictionary[ProgressType.Output] = databaseObject.DatabaseObjectFolderAndName;
-                            progressDatabaseObjectDictionary[ProgressType.Name] = string.Format(MessageStrings.Executing, databaseObject.DatabaseObjectName);
-                            progressDatabaseObjectDictionary[ProgressType.StepCount] = count.ToString();
+                            var progressDatabaseObjectDictionary = new Dictionary<ProgressType, string>
+                            {
+                                [ProgressType.Output] = databaseObject.DatabaseObjectFolderAndName,
+                                [ProgressType.Name] = string.Format(MessageStrings.Executing, databaseObject.DatabaseObjectName),
+                                [ProgressType.StepCount] = count.ToString()
+                            };
                             if (sessionCommonSettings.Verbose)
                             {
                                 progress.Report(progressDatabaseObjectDictionary);
@@ -129,10 +135,12 @@ namespace DatabaseObjectPackageInstaller.Workers
                 }
                 catch(Exception ex)
                 {
-                    var progressCriticalErrorDictionary = new Dictionary<ProgressType, string>();
-                    progressCriticalErrorDictionary[ProgressType.Error] = ex.Message;
-                    progressCriticalErrorDictionary[ProgressType.Name] = MessageStrings.ProgressFailed;
-                    progressCriticalErrorDictionary[ProgressType.BarStatus] = ProgressBarStatusType.Error.ToString();
+                    var progressCriticalErrorDictionary = new Dictionary<ProgressType, string>
+                    {
+                        [ProgressType.Error] = ex.Message,
+                        [ProgressType.Name] = MessageStrings.ProgressFailed,
+                        [ProgressType.BarStatus] = ProgressBarStatusType.Error.ToString()
+                    };
                     progress.Report(progressCriticalErrorDictionary);
                 }
             }, cancelToken);

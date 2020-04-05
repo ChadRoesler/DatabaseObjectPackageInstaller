@@ -1,7 +1,7 @@
 ﻿namespace DatabaseObjectPackageInstaller.Forms
 
 {
-    partial class frmDatabaseObjectPackageInstallerProgress
+    partial class FrmDatabaseObjectPackageInstallerProgress
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatabaseObjectPackageInstallerProgress));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDatabaseObjectPackageInstallerProgress));
             this.pctBanner = new System.Windows.Forms.PictureBox();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -160,7 +160,7 @@
             this.btnBack.TabIndex = 32;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // btnCancel
             // 
@@ -171,7 +171,7 @@
             this.btnCancel.TabIndex = 33;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnExit
             // 
@@ -182,7 +182,7 @@
             this.btnExit.TabIndex = 31;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // frmDatabaseObjectPackageInstallerProgress
             // 
@@ -207,7 +207,7 @@
             this.MinimumSize = new System.Drawing.Size(674, 621);
             this.Name = "frmDatabaseObjectPackageInstallerProgress";
             this.Text = "Database Object Package Installer";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDatabaseObjectPackageInstallerProgress_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDatabaseObjectPackageInstallerProgress_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pctBanner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

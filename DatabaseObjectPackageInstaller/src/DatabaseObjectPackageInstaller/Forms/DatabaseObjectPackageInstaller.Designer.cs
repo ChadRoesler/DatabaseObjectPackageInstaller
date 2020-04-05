@@ -98,7 +98,7 @@
             this.rdbFile.TabStop = true;
             this.rdbFile.Text = "File";
             this.rdbFile.UseVisualStyleBackColor = true;
-            this.rdbFile.CheckedChanged += new System.EventHandler(this.rdbFile_CheckedChanged);
+            this.rdbFile.CheckedChanged += new System.EventHandler(this.RdbFile_CheckedChanged);
             // 
             // rdbFolder
             // 
@@ -110,7 +110,7 @@
             this.rdbFolder.TabIndex = 12;
             this.rdbFolder.Text = "Folder";
             this.rdbFolder.UseVisualStyleBackColor = true;
-            this.rdbFolder.CheckedChanged += new System.EventHandler(this.rdbFolder_CheckedChanged);
+            this.rdbFolder.CheckedChanged += new System.EventHandler(this.RdbFolder_CheckedChanged);
             // 
             // lblInfoText
             // 
@@ -178,7 +178,7 @@
             this.btnPackagePath.TabIndex = 16;
             this.btnPackagePath.Text = "...";
             this.btnPackagePath.UseVisualStyleBackColor = true;
-            this.btnPackagePath.Click += new System.EventHandler(this.btnPackagePath_Click);
+            this.btnPackagePath.Click += new System.EventHandler(this.BtnPackagePath_Click);
             // 
             // grpDatabaseConnection
             // 
@@ -211,7 +211,7 @@
             this.btnServerBrowser.TabIndex = 10;
             this.btnServerBrowser.Text = "Browse...";
             this.btnServerBrowser.UseVisualStyleBackColor = true;
-            this.btnServerBrowser.Click += new System.EventHandler(this.btnServerBrowser_Click);
+            this.btnServerBrowser.Click += new System.EventHandler(this.BtnServerBrowser_Click);
             // 
             // cmbAuthentication
             // 
@@ -225,7 +225,7 @@
             this.cmbAuthentication.Name = "cmbAuthentication";
             this.cmbAuthentication.Size = new System.Drawing.Size(277, 24);
             this.cmbAuthentication.TabIndex = 9;
-            this.cmbAuthentication.SelectedIndexChanged += new System.EventHandler(this.cmbAuthentication_SelectedIndexChanged);
+            this.cmbAuthentication.SelectedIndexChanged += new System.EventHandler(this.CmbAuthentication_SelectedIndexChanged);
             // 
             // txtPassword
             // 
@@ -329,7 +329,7 @@
             this.btnExit.TabIndex = 19;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnInstall
             // 
@@ -340,7 +340,7 @@
             this.btnInstall.TabIndex = 20;
             this.btnInstall.Text = "&Install";
             this.btnInstall.UseVisualStyleBackColor = true;
-            this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
+            this.btnInstall.Click += new System.EventHandler(this.BtnInstall_Click);
             // 
             // pctBanner
             // 

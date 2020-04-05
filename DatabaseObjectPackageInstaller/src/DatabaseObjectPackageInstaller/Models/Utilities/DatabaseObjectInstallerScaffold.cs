@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CommandLine;
 using HybridScaffolding;
+using HybridScaffolding.Enums;
 using log4net;
 using DatabaseObjectPackageInstaller.Constants;
 using DatabaseObjectPackageInstaller.Enums;
@@ -20,17 +21,16 @@ namespace DatabaseObjectPackageInstaller.Models.Utilities
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public static CancellationTokenSource CancelSource { get; set; }
 
-        public override void ConsoleMain(string[] arguments, RunTypes runType
-            )
+        public override void ConsoleMain(string[] arguments, RunTypes runType)
         {
             var task = ConsoleTask(arguments);
             task.Wait();
             base.ConsoleMain(arguments, runType);
         }
 
-        public override Form PreGuiExec(Form formToUse)
+        public override object PreGuiExec(string[] arguments, object passableObject)
         {
-            return base.PreGuiExec(formToUse);
+            return base.PreGuiExec(arguments, passableObject);
         }
 
         private async static Task ConsoleTask(string[] arguments)
@@ -100,12 +100,17 @@ namespace DatabaseObjectPackageInstaller.Models.Utilities
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex.Message);
                 Log.Error(dopiCommands.GetUsage());
                 Environment.Exit(1);
             }
+        }
+
+        public override void GuiMain(string[] arguments, object passableObject)
+        {
+            base.GuiMain(arguments, passableObject);
         }
     }
 }

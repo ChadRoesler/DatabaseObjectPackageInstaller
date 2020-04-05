@@ -21,7 +21,7 @@ namespace DatabaseObjectPackageInstaller.Forms
     {
 #region PrivateVars
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private static readonly frmDatabaseObjectPackageInstallerProgress taskDopiForm = new frmDatabaseObjectPackageInstallerProgress();
+        private static readonly FrmDatabaseObjectPackageInstallerProgress taskDopiForm = new FrmDatabaseObjectPackageInstallerProgress();
 #endregion PrivateVars
         public frmDatabaseObjectPackageInstaller()
         {
@@ -248,17 +248,17 @@ namespace DatabaseObjectPackageInstaller.Forms
 #endregion Methods
 
 #region Events
-        private void rdbFile_CheckedChanged(object sender, EventArgs e)
+        private void RdbFile_CheckedChanged(object sender, EventArgs e)
         {
             rdbFile.Checked = !rdbFolder.Checked;
         }
 
-        private void rdbFolder_CheckedChanged(object sender, EventArgs e)
+        private void RdbFolder_CheckedChanged(object sender, EventArgs e)
         {
             rdbFolder.Checked = !rdbFile.Checked;
         }
 
-        private void btnPackagePath_Click(object sender, EventArgs e)
+        private void BtnPackagePath_Click(object sender, EventArgs e)
         {
             if(rdbFile.Checked)
             {
@@ -291,7 +291,7 @@ namespace DatabaseObjectPackageInstaller.Forms
             }
         }
 
-        private void btnServerBrowser_Click(object sender, EventArgs e)
+        private void BtnServerBrowser_Click(object sender, EventArgs e)
         {
             var sqlDataSource = new DataSource("MicrosoftSqlServer", "Microsoft SQL Server");
             DataConnectionDialog dialog = new DataConnectionDialog();
@@ -315,7 +315,7 @@ namespace DatabaseObjectPackageInstaller.Forms
             }
         }
 
-        private void cmbAuthentication_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbAuthentication_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (AuthenticationType == UiStrings.IntegratedSecurityText)
             {
@@ -335,7 +335,7 @@ namespace DatabaseObjectPackageInstaller.Forms
             }
         }
 
-        private void btnInstall_Click(object sender, EventArgs e)
+        private void BtnInstall_Click(object sender, EventArgs e)
         {
             erpValidation.ClearAll(this);
             if(!ValidateForm())
@@ -356,7 +356,7 @@ namespace DatabaseObjectPackageInstaller.Forms
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
